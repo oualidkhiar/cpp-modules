@@ -53,7 +53,7 @@ class contact{
                 return false;
             if (std::cin.eof()) {
                 std::cout << "End of input detected (EOF).\n";
-                return false;
+                exit(0);
             }
             std::cout << "Enter the last name: ";
             std::getline(std::cin, lastname);
@@ -61,7 +61,7 @@ class contact{
                 return false;
             if (std::cin.eof()) {
                 std::cout << "End of input detected (EOF).\n";
-                return false;
+                exit(0);
             }
             std::cout << "Enter the nickname: ";
             std::getline(std::cin, nickname);
@@ -69,7 +69,7 @@ class contact{
                 return false;
             if (std::cin.eof()) {
                 std::cout << "End of input detected (EOF).\n";
-                return false;
+                exit(0);
             }
             std::cout << "Enter the phone number: ";
             std::getline(std::cin, phonenumber);
@@ -77,7 +77,7 @@ class contact{
                 return false;
             if (std::cin.eof()) {
                 std::cout << "End of input detected (EOF).\n";
-                return false;
+                exit(0);
             }
             std::cout << "Enter the darkestsecret: ";
             std::getline(std::cin, darkestsecret);
@@ -85,7 +85,7 @@ class contact{
                 return false;
             if (std::cin.eof()) {
                 std::cout << "End of input detected (EOF).\n";
-                return false;
+                exit(0);
             }
             return true;
         }
@@ -137,10 +137,8 @@ class PhoneBook{
                 contacts[index] = new contact;
                 delete tmp;
             }
-            if (!(contacts[index]->set_information())){
-                std::cout << "\nEnd of input detected (EOF).\n";
-                exit(0);
-            }
+            if (!(contacts[index]->set_information()))
+                return ;
             index++;
         }
         void print_table(int count, contact **contacts) {
