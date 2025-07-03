@@ -4,38 +4,28 @@
 #include <cstdlib>
 #include <limits> 
 
-// first introduction ex00 
-// struct st{
-//     char *str;
-//     void print_lower(){
-//         for (int i = 0; str[i]; i++){
-//             if (str[i] >= 97 && str[i] <= 122){
-//                 str[i] -= 32;
-//                 std::cout << str[i];
-//             }
-//             else
-//                 std::cout << str[i];
-//         }
-//     }
-// };
-
-// int main(int ac, char **av){
-//     st arg_cap;
-//     for (int i = 1; av[i]; i++){
-//         arg_cap.str = av[i];
-//         arg_cap.print_lower();
-//     }
-//     return (0);
-// }
-//  finish ex00
-
-// ex01
-
 std::string format_field(std::string str) {
     if (str.length() > 10)
         return str.substr(0, 9) + ".";
     else
         return std::string(10 - str.length(), ' ') + str;
+}
+
+std::string get_input_from_user(const std::string &msg)
+{
+    std::string input;
+    size_t start;
+
+    start = 0;
+    std::cout << msg;
+    std::getline(std::cin, input);
+    if (std::cin.eof()) {
+        std::cout << "\nEnd of input detected (EOF).\n";
+        exit(0);
+    }
+    while (start < input.length() && std::isspace(input[start]))
+        start++;
+    return (input.substr(start, input.length() - start));
 }
 
 class contact{
@@ -47,46 +37,21 @@ class contact{
         std::string darkestsecret;
     public:
         bool set_information(){
-            std::cout << "Enter the first name: ";
-            std::getline(std::cin, firstname);
-            if (std::cin.fail() || firstname.length() == 0)
+            firstname = get_input_from_user("Enter the first name: ");
+            if (firstname.length() == 0)
                 return false;
-            if (std::cin.eof()) {
-                std::cout << "End of input detected (EOF).\n";
-                exit(0);
-            }
-            std::cout << "Enter the last name: ";
-            std::getline(std::cin, lastname);
-            if (std::cin.fail() || lastname.length() == 0)
+            lastname = get_input_from_user("Enter the last name: ");
+            if (lastname.length() == 0)
                 return false;
-            if (std::cin.eof()) {
-                std::cout << "End of input detected (EOF).\n";
-                exit(0);
-            }
-            std::cout << "Enter the nickname: ";
-            std::getline(std::cin, nickname);
-            if (std::cin.fail() || nickname.length() == 0)
+            nickname = get_input_from_user("Enter the nick name: ");
+            if (nickname.length() == 0)
                 return false;
-            if (std::cin.eof()) {
-                std::cout << "End of input detected (EOF).\n";
-                exit(0);
-            }
-            std::cout << "Enter the phone number: ";
-            std::getline(std::cin, phonenumber);
-            if (std::cin.fail() || phonenumber.length() == 0)
+            phonenumber = get_input_from_user("Enter the phone number: ");
+            if (phonenumber.length() == 0)
                 return false;
-            if (std::cin.eof()) {
-                std::cout << "End of input detected (EOF).\n";
-                exit(0);
-            }
-            std::cout << "Enter the darkestsecret: ";
-            std::getline(std::cin, darkestsecret);
-            if (std::cin.fail() || darkestsecret.length() == 0)
+            darkestsecret = get_input_from_user("Enter the darkest secret: ");
+            if (darkestsecret.length() == 0)
                 return false;
-            if (std::cin.eof()) {
-                std::cout << "End of input detected (EOF).\n";
-                exit(0);
-            }
             return true;
         }
         std::string get_information(std::string target){
@@ -141,7 +106,7 @@ class PhoneBook{
                 return ;
             index++;
         }
-        void print_table(int count, contact **contacts) {
+        static void print_table(int count, contact **contacts) {
             std::cout << "|-------------------------------------------|\n";
             std::cout << "|" << format_field("index") << "|" << format_field("firstname")
             << "|" << format_field("lastname") << "|" << format_field("nickname") << "|\n";
@@ -165,26 +130,21 @@ class PhoneBook{
             else {
                 print_table(8, contacts);
             }
-            std::cout << "Enter the index you want: ";
-            std::getline(std::cin, num_str);
-            if (std::cin.eof()) {
-                std::cout << "\nEnd of input detected (EOF).\n";
-                exit(0);
-            }
+            num_str = get_input_from_user("Enter the index you want: ");
             if (std::cin.fail())
                 return ;
             if (num_str.length() == 1 && std::isdigit(num_str[0]))
                 i = num_str[0] - '0';
             else {
-                std::cout << "Invalid index!\ntry using integer value between 1 and 8\n";
+                std::cout << "Invalid index!\ntry using integer value from 1 to 8\n";
                 return;
             }
             if (i < 1) {
-                std::cout << "Invalid index!\ntry using integer value between 1 and 8\n";
+                std::cout << "Invalid index!\ntry using integer value from 1 to 8\n";
                 return ;
             }
             if (i > index && !cycle_flag) {
-                std::cout << "you have just " << index << " number of contacts\n";
+                std::cout << "you have " << index << " number of contacts\n";
                 return ;
             }
             std::cout << "The information of contact index " << i << " is :\n\n";
@@ -212,13 +172,7 @@ int main()
             std::cout << "   *  EXIT: Exit the program\n";
             p_flag = false;
         }
-        std::cout << "Enter your option: ";
-        std::cin >> option;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        if (std::cin.eof()) {
-            std::cout << "\nEnd of input detected (EOF).\n";
-            exit(0);
-        }
+        option = get_input_from_user("Enter your option: ");
         if (option == "ADD")
             Book->add_contact();
         else if (option == "SEARCH")
