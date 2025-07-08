@@ -12,8 +12,9 @@ class PhoneBook{
         PhoneBook();
         ~PhoneBook();
         void add_contact();
-        static void print_table(int count, contact **contacts);
         void get_contact();
 };
+
+    void print_table(int count, contact **contacts);
 
 #endif

@@ -37,7 +37,7 @@ void PhoneBook::add_contact()
     index++;
 }
 
-void PhoneBook::print_table(int count, contact **contacts)
+void print_table(int count, contact **contacts)
 {
     std::cout << "|-------------------------------------------|\n";
     std::cout << "|" << format_field("index") << "|" << format_field("firstname")
