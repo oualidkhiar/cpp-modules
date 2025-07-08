@@ -3,6 +3,10 @@
 
 #include "contact.hpp"
 
+#ifndef CONTACTS_SIZE
+#define CONTACTS_SIZE 8
+#endif
+
 class PhoneBook{
     private:
         int index;
@@ -15,6 +19,6 @@ class PhoneBook{
         void get_contact();
 };
 
-    void print_table(int count, contact **contacts);
+void print_table(int count, contact **contacts);
 
 #endif

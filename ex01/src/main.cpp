@@ -1,5 +1,7 @@
 #include "../includes/phonebook.hpp"
 
+
+// read io manipolators : https://www.geeksforgeeks.org/cpp/manipulators-in-c-with-examples/
 int main()
 {
     PhoneBook *Book = new PhoneBook;

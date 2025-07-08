@@ -1,9 +1,10 @@
 
 #include "../includes/phonebook.hpp"
+#include <utility>
 
 PhoneBook::PhoneBook(){
-    contacts = new contact*[8];
-    for (int i = 0; i < 8; i++){
+    contacts = new contact*[CONTACTS_SIZE];
+    for (int i = 0; i < CONTACTS_SIZE; i++){
         contacts[i] = new contact;
     }
     index = 0;
@@ -11,7 +12,7 @@ PhoneBook::PhoneBook(){
 }
 
 PhoneBook::~PhoneBook(){
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < CONTACTS_SIZE; i++){
         delete contacts[i];
     }
     delete[] contacts;
@@ -21,7 +22,7 @@ void PhoneBook::add_contact()
 {
     contact *tmp;
 
-    if (index == 8)
+    if (index == CONTACTS_SIZE)
     {
         index = 0;
         if (!cycle_flag)
@@ -55,28 +56,31 @@ void print_table(int count, contact **contacts)
 void PhoneBook::get_contact(){
         std::string num_str;
         int i;
+        std::string error_msg;
+
+        error_msg = "Invalid index!\ntry using integer value from 1 to " + std::to_string(CONTACTS_SIZE);
 
         if (!cycle_flag) {
             if (index >= 1)
                 print_table(index, contacts);
         }
         else {
-            print_table(8, contacts);
+            print_table(CONTACTS_SIZE, contacts);
         }
         num_str = get_input_from_user("Enter the index you want: ");
         if (std::cin.fail())
             return ;
-        if (num_str.length() == 1 && std::isdigit(num_str[0]))
+
+        bool is_nbr = num_str.length() == 1 && std::isdigit(num_str[0]);
+        if (is_nbr)
             i = num_str[0] - '0';
-        else {
-            std::cout << "Invalid index!\ntry using integer value from 1 to 8\n";
-            return;
-        }
-        if (i < 1) {
-            std::cout << "Invalid index!\ntry using integer value from 1 to 8\n";
+
+        if (!is_nbr || i == 0) {
+            std::cout << error_msg << "\n";
             return ;
         }
-        if (i > index && !cycle_flag) {
+
+        if ((i > index && !cycle_flag) || i > CONTACTS_SIZE) {
             std::cout << "you have " << index << " number of contacts\n";
             return ;
         }
