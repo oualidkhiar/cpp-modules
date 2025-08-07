@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 17:02:29 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/04 10:49:36 by Oukhiar          ###   ########.fr       */
+/*   Created: 2025/08/01 20:01:14 by Oukhiar           #+#    #+#             */
+/*   Updated: 2025/08/04 10:48:57 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-int main( void ) {
+Point::Point(): x(0), y(0) {}
 
-    Point a(0.0f, 0.0f);
-    Point b(10.0f, 0.0f);
-    Point c(0.0f, 10.0f);
-    
-    Point inside(3.0f, 3.0f);
-    Point outside(10.0f, 10.0f);
-    Point edge(5.0f, 0.0f);
-    Point vertex(0.0f, 0.0f);
+Point::Point(float x, float y): x(x), y(y) {}
 
-    if (bsp(a, b, c, inside))
-        std::cout << "inside" << std::endl;
-    else
-        std::cout << "outside" << std::endl;
-    return 0;
+Point::Point(const Point& other): x(other.x) , y(other.y) {}
 
+Point::~Point() {
+    std::cout << "destructor called" << std::endl;
+}
+
+float Point::getX() const {
+    return x.toFloat();
+}
+
+float Point::getY() const {
+    return y.toFloat();
 }

@@ -3,30 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 17:02:29 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/04 10:49:36 by Oukhiar          ###   ########.fr       */
+/*   Created: 2025/08/06 13:54:05 by oukhiar           #+#    #+#             */
+/*   Updated: 2025/08/06 16:10:58 by oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Point.hpp"
+#include "ClapTrap.hpp"
 
-int main( void ) {
+int main()
+{
+    ClapTrap a;
+    ClapTrap b("other");
 
-    Point a(0.0f, 0.0f);
-    Point b(10.0f, 0.0f);
-    Point c(0.0f, 10.0f);
-    
-    Point inside(3.0f, 3.0f);
-    Point outside(10.0f, 10.0f);
-    Point edge(5.0f, 0.0f);
-    Point vertex(0.0f, 0.0f);
-
-    if (bsp(a, b, c, inside))
-        std::cout << "inside" << std::endl;
-    else
-        std::cout << "outside" << std::endl;
-    return 0;
-
+    for (int i = 0; i < 10; i++)
+    {
+        a.attack("name");
+        a.beRepaired(2);
+        a.takeDamage(5);
+    }
 }

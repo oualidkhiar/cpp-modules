@@ -1,13 +1,12 @@
-NAME = BspFixed
+NAME = ClapTrap
 
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS =  main.cpp \
-	Fixed.cpp\
-	bsp.cpp\
-	Point.cpp
+SRCS = main.cpp \
+	/prev_ex/ClapTrap.cpp \
+	ScavTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

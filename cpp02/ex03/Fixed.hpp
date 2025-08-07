@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 17:04:03 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/01 19:39:38 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/04 10:15:15 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Fixed {
         Fixed();
         Fixed(const int val);
         Fixed(const float val);
-        Fixed(const Fixed& OldObj);
+        Fixed(const Fixed& other);
         ~Fixed();
         Fixed& operator=(const Fixed& other);
 

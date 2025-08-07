@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 17:02:29 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/04 10:49:36 by Oukhiar          ###   ########.fr       */
+/*   Created: 2025/08/07 12:37:32 by Oukhiar           #+#    #+#             */
+/*   Updated: 2025/08/07 18:43:11 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Point.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int main( void ) {
+#include "./prev_ex/ClapTrap.hpp"
 
-    Point a(0.0f, 0.0f);
-    Point b(10.0f, 0.0f);
-    Point c(0.0f, 10.0f);
-    
-    Point inside(3.0f, 3.0f);
-    Point outside(10.0f, 10.0f);
-    Point edge(5.0f, 0.0f);
-    Point vertex(0.0f, 0.0f);
+class ScavTrap : public ClapTrap{
+    private:
+        
+    public:
+        ScavTrap();
+        ScavTrap(std::string name);
+        ~ScavTrap();
+};
 
-    if (bsp(a, b, c, inside))
-        std::cout << "inside" << std::endl;
-    else
-        std::cout << "outside" << std::endl;
-    return 0;
-
-}
+#endif
