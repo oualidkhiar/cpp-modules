@@ -6,18 +6,18 @@
 /*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:53:52 by oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/06 16:10:51 by oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:12:48 by oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(): name("Oualid"), hit_pts(10), Energy_pts(10), Attack_dmg(0) {
-        std::cout << "default constructor for the name " << name << " called" << std::endl;
+        std::cout << "default constructor for ClapTrap " << name << " called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): name(name), hit_pts(10), Energy_pts(10), Attack_dmg(0) {
-        std::cout << "default constructor for the name " << name << " called" << std::endl;
+        std::cout << "default constructor for ClapTrap " << name << " called" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {

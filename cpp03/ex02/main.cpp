@@ -6,21 +6,13 @@
 /*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:05 by oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/08 14:33:30 by oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:49:41 by oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-    ScavTrap a;
-
-    for (int i = 0; i < 4; i++) {
-        a.GetStatus();
-        a.attack("other");
-        a.beRepaired(2); 
-        a.takeDamage(3);
-        a.guardGate();
-    }
+    
 }

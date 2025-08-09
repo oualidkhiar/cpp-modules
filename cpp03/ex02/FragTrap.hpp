@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 13:54:05 by oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/08 14:33:30 by oukhiar          ###   ########.fr       */
+/*   Created: 2025/08/08 14:47:20 by oukhiar           #+#    #+#             */
+/*   Updated: 2025/08/08 15:09:32 by oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int main()
-{
-    ScavTrap a;
+#include "../ex01/ScavTrap.hpp"
 
-    for (int i = 0; i < 4; i++) {
-        a.GetStatus();
-        a.attack("other");
-        a.beRepaired(2); 
-        a.takeDamage(3);
-        a.guardGate();
-    }
-}
+class FragTrap: public ClapTrap {
+
+public:
+    FragTrap();
+    FragTrap(std::string name);
+    FragTrap(const FragTrap& cp);
+    FragTrap& operator=(const FragTrap& other);
+    ~FragTrap();
+
+    void highFivesGuys(void);
+};
+
+
+
+#endif
