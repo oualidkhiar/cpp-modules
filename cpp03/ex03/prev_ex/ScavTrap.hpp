@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 12:37:32 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/11 17:33:52 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/11 17:52:01 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap{
-private:
+class ScavTrap : virtual public ClapTrap{
+protected:
     bool GateFlag;
 public:
     ScavTrap();
@@ -27,7 +27,7 @@ public:
 
     void attack( std::string name );
     void guardGate();
-
+    
     void GetStatus(void);
 
 };

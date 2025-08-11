@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 12:37:29 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/08 14:33:05 by oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/11 17:34:43 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
 }
 
 ScavTrap::ScavTrap(const ScavTrap& cp): ClapTrap(cp){
-    this->GateFlag = false;
+    this->GateFlag = cp.GateFlag;
     std::cout << "Copy constructor for ScavTrap " << this->name << " called" << std::endl;
 }
 
@@ -73,7 +73,6 @@ void ScavTrap::guardGate() {
         if (!(this->GateFlag)) {
             this->GateFlag = true;
             std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode" << std::endl;
-            this->Energy_pts--;
         }
         else
             std::cout << "ScavTrap " << this->name << " is already in Gate keeper mode" << std::endl;
@@ -82,6 +81,7 @@ void ScavTrap::guardGate() {
 
 
 void ScavTrap::GetStatus(void) {
-    std::cout << "Status is >> "<< this->name << ": HitPts " << this->hit_pts << ": EnergyPts " << this->Energy_pts << ": AttackDmg " << this->Attack_dmg << std::endl;
+    std::cout << "Status is >> "<< this->name << ": HitPts " << this->hit_pts 
+    << ": EnergyPts " << this->Energy_pts << ": AttackDmg " << this->Attack_dmg << std::endl;
 }
 

@@ -6,30 +6,26 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 12:37:29 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/10 15:46:06 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/11 17:33:09 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(): ClapTrap() {
-    this->hit_pts = 100;
     this->Energy_pts = 50;
-    this->Attack_dmg = 20;
     this->GateFlag = false;
     std::cout << "default constructor for ScavTrap " << this->name << " called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
-    this->hit_pts = 100;
     this->Energy_pts = 50;
-    this->Attack_dmg = 20;
     this->GateFlag = false;
     std::cout << "default constructor for ScavTrap " << this->name << " called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& cp): ClapTrap(cp){
-    this->GateFlag = false;
+    this->GateFlag = cp.GateFlag;
     std::cout << "Copy constructor for ScavTrap " << this->name << " called" << std::endl;
 }
 
