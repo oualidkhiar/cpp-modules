@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:53:52 by oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/08 14:14:23 by oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/12 12:08:04 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): name("Oualid"), hit_pts(10), Energy_pts(10), Attack_dmg(0) {
+ClapTrap::ClapTrap(): name("default_clap_name"), hit_pts(10), Energy_pts(10), Attack_dmg(0) {
         std::cout << "default constructor for ClapTrap " << name << " called" << std::endl;
 }
 

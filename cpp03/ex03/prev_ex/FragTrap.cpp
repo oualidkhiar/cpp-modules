@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:47:27 by oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/11 17:31:43 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/08/12 12:14:35 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 FragTrap::FragTrap(): ClapTrap() {
     this->hit_pts = 100;
+    this->Energy_pts = 100;
     this->Attack_dmg = 30;
     std::cout << "default constructor for FragTrap " << this->name << " called" << std::endl;
 }
