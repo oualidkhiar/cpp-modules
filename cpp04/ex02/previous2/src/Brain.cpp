@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 14:29:13 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/09/05 13:45:03 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:05:25 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ Brain::~Brain() {
 }
 
 void Brain::setIdea(std::string idea, int index) {
-    if (index < 100 && index >= 0)
+    if (index < NBIDEAS && index >= 0)
         this->ideas[index] = idea;
     else
         std::cout << "invalid index" << std::endl;
 }
 
 std::string Brain::getIdea(int index) {
-    if (index < 100 && index >= 0 && ideas[index].length() != 0)
+    if (index < NBIDEAS && index >= 0 && ideas[index].length() != 0)
         return this->ideas[index];
     else {
         std::cout << "there is no idea in this index" << std::endl;
