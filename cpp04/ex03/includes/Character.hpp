@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 12:57:37 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/09/14 17:52:57 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/09/16 09:16:46 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,24 @@
 
 class Character: public ICharacter {
 private:
-    AMateria *inventory[SIZEINVENTORY];    
+    AMateria *inventory[SIZEINVENTORY];
+    std::string _name;
 public:
-    Character();
+    Character(std::string name);
     ~Character();
     Character(const Character& other);
     Character& operator=(const Character& other);
+    
+    std::string const & getName() const;
+    AMateria* getMatria(int indx) const;
+
     void equip(AMateria* m);
     void unequip(int idx);
     void use(int idx, ICharacter& target);
 };
 
 
-Character::Character() {
+Character::Character(std::string name): _name(name) {
     for (int i =0; i < SIZEINVENTORY; i++) {
         this->inventory[i] = NULL;
     }
@@ -59,6 +64,12 @@ Character::~Character() {
     for (int i = 0; i < SIZEINVENTORY; i++) {
         delete inventory[i];
     }
+}
+AMateria* Character::getMatria(int indx) const {
+    return this->inventory[indx];
+}
+std::string const & Character::getName() const{
+    return this->_name;
 }
 void Character::equip(AMateria* m) {
     for (int i = 0; i < SIZEINVENTORY; i++) {

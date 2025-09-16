@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:39:31 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/09/05 14:01:50 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/09/16 10:01:57 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main()
 
     ((Dog *)j)->setIdea("walid", 1);
     std::cout << ((Dog *)j)->getIdea(10) << std::endl;
-    
+
     delete meta;
     delete i;
     delete j;
