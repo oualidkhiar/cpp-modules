@@ -6,7 +6,7 @@
 /*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:39:58 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/08/29 16:07:23 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/09/17 14:37:39 by Oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Animal::~Animal() {
 }
 
 void Animal::makeSound( void ) const{
-    std::cout << "Animal" << std::endl;
+    std::cout << "Animal cannot make sound " << std::endl;
 }
 
 std::string Animal::getType() const{
