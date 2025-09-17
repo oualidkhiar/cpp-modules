@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Oukhiar <oukhiar@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: oukhiar <oukhiar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 09:19:27 by Oukhiar           #+#    #+#             */
-/*   Updated: 2025/09/16 09:58:26 by Oukhiar          ###   ########.fr       */
+/*   Updated: 2025/09/17 09:49:22 by oukhiar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
     const MateriaSource& operator=(const MateriaSource& other);
     ~MateriaSource();
     void learnMateria(AMateria*);
+    AMateria* createMateria(std::string const & type);
 };
 
 MateriaSource::MateriaSource(): IMateriaSource() {
@@ -66,7 +67,21 @@ MateriaSource::~MateriaSource() {
     }
 }
 void MateriaSource::learnMateria(AMateria* m) {
-    
+    for (int i = 0; i < MAX_MATERIASRC; i++) {
+        if (!(this->table[i])) {
+            this->table[i] = m;
+            return ;
+        }
+    }
+}
+
+AMateria* MateriaSource::createMateria(std::string const & type)  {
+    for (int i = 0; i < MAX_MATERIASRC; i++) {
+        if (this->table[i]->getType() == type) {
+            return (this->table[i]->clone());
+        }
+    }
+    return NULL;
 }
 
 #endif
