@@ -2,7 +2,6 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include <string>
 #include <exception>
 
 #define HIGHEST_GRADE 1
