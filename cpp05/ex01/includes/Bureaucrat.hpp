@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+class Form;
 
 #define HIGHEST_GRADE 1
 #define LOWEST_GRADE 150
@@ -37,6 +38,8 @@ private:
         public:
             const char *what() const throw();
     };
+    // added function
+    void signForm(Form& f);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
