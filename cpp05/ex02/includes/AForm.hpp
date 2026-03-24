@@ -11,7 +11,7 @@
 #define LOWEST_GRADE 150
 
 
-class Form {
+class AForm {
 private:
 
     const std::string   name;
@@ -22,10 +22,10 @@ private:
 public:
 
     // constructors
-    Form(std::string name, const int Sign_grade, const int execute_Grade);
-    Form(const Form& other);
-    Form& operator=(const Form& other);
-    ~Form();
+    AForm(std::string name, const int Sign_grade, const int execute_Grade);
+    AForm(const AForm& other);
+    AForm& operator=(const AForm& other);
+    ~AForm();
 
     // geters
     const std::string getName() const;
@@ -51,6 +51,6 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& obj);
+std::ostream& operator<<(std::ostream& os, const AForm& obj);
 
 #endif
