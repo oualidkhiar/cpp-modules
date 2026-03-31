@@ -2,7 +2,6 @@
 #include "../includes/Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade): name(name), grade(grade) {
-    std::cout << "constructor called for " << this->name << std::endl;
     if (grade < HIGHEST_GRADE) {
         throw GradeTooHighException();
     }
@@ -11,12 +10,9 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade): name(name), grade(gr
     }
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other): name(other.name), grade(other.grade) {
-    std::cout << "copy constructor called for " << this->name << std::endl;
-}
+Bureaucrat::Bureaucrat(const Bureaucrat& other): name(other.name), grade(other.grade) {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
-    std::cout << "assignment operator called" << std::endl;
     if (this != &other) {
         this->grade = other.grade;
     }

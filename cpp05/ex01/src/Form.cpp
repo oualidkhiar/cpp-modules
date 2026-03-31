@@ -2,26 +2,17 @@
 
 Form::Form(std::string name, const int Sign_grade, const int execute_Grade): 
 name(name), Signed(false), grade_to_sign(Sign_grade), grade_to_execute(execute_Grade) {
-    std::cout << "constructor called name: " << this->name << " class Form" << std::endl;
-    if (grade_to_execute < HIGHEST_GRADE) {
+    if (Sign_grade < HIGHEST_GRADE || execute_Grade < HIGHEST_GRADE) {
         throw GradeTooHighException();
-    }else if (grade_to_execute > LOWEST_GRADE) {
-        throw GradeTooLowException();
-    }
-    if (grade_to_sign < HIGHEST_GRADE) {
-        throw GradeTooHighException();
-    }else if (grade_to_sign > LOWEST_GRADE) {
+    } else if (Sign_grade > LOWEST_GRADE || execute_Grade > LOWEST_GRADE) {
         throw GradeTooLowException();
     }
 }
 
 Form::Form(const Form& other): 
-name(other.name), Signed(other.Signed), grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute) {
-    std::cout << "copy constructor called for name: " << this->name << " class Form" << std::endl;
-}
+name(other.name), Signed(other.Signed), grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute) {}
 
 Form& Form::operator=(const Form& other) {
-    std::cout << "copy assignment operator called for name: " << this->name << " class Form" << std::endl;
     this->Signed = other.Signed;
     return *this;
 }
