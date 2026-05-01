@@ -9,7 +9,7 @@
 #define LOWEST_GRADE 150
 
 class Bureaucrat {
-private:
+    private:
 
     const std::string   name;
     int                 grade;

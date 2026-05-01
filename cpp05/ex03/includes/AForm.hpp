@@ -25,12 +25,12 @@ public:
     AForm(std::string name, const int Sign_grade, const int execute_Grade);
     AForm(const AForm& other);
     AForm& operator=(const AForm& other);
-    ~AForm();
+    virtual ~AForm();
 
     // geters
     const std::string getName() const;
-    const int getGradeExecute() const;
-    const int getGradetoSign() const;
+    int getGradeExecute() const;
+    int getGradetoSign() const;
     bool isSigned();
 
     // other member functions

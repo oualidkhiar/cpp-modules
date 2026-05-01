@@ -16,16 +16,40 @@ Intern& Intern::operator=(const Intern& other) {
 
 Intern::~Intern() {}
 
+AForm* createShrubbery(const std::string& target) {
+    return new ShrubberyCreationForm(target);
+}
+
+AForm* createRobotomy(const std::string& target) {
+    return new RobotomyRequestForm(target);
+}
+
+AForm* createPresidential(const std::string& target) {
+    return new PresidentialPardonForm(target);
+}
+
 AForm* Intern::makeForm(const std::string& formName, const std::string& target) {
-    if (formName == "shrubbery creation") {
-        return new ShrubberyCreationForm(target);
-    } else if (formName == "robotomy request") {
-        return new RobotomyRequestForm(target);
-    } else if (formName == "presidential pardon") {
-        return new PresidentialPardonForm(target);
-    } else {
-        std::cerr << "Error: Unknown form name '" << formName << "'." << std::endl;
-        return NULL;
+
+    std::string names[3] = {
+        "shrubbery creation",
+        "robotomy request",
+        "presidential pardon"
+    };
+
+    FormCreator functions[3] = {
+        createShrubbery,
+        createRobotomy,
+        createPresidential
+    };
+
+    for (int i = 0; i < 3; i++) {
+        if (names[i] == formName) {
+            std::cout << "Intern creates " << formName << std::endl;
+            return (functions[i](target));
+        }
     }
+
+    std::cerr << "Error: Unknown form name '" << formName << "'" << std::endl;
+    return NULL;
 }
 

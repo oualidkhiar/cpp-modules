@@ -14,9 +14,6 @@ public:
     ~RobotomyRequestForm();
 
     void execute(const Bureaucrat& executor) const;
-
-private:
-    std::string target;
 };
 
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& obj);

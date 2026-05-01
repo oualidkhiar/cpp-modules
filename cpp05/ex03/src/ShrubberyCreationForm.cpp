@@ -15,9 +15,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
-    std::cout << "deconstrictor called for name: " << this->getName() << " class ShrubberyCreationForm" << std::endl;
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 std::string ShrubberyCreationForm::getTarget() const {
     return this->target;

@@ -29,8 +29,8 @@ public:
 
     // geters
     const std::string getName() const;
-    const int getGradeExecute() const;
-    const int getGradetoSign() const;
+    int getGradeExecute() const;
+    int getGradetoSign() const;
     bool isSigned();
 
     // other member functions

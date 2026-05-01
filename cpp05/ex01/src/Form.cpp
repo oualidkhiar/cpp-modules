@@ -17,13 +17,11 @@ Form& Form::operator=(const Form& other) {
     return *this;
 }
 
-Form::~Form() {
-    std::cout << "deconstrictor called for name: " << this->name << " class Form" << std::endl;
-}
+Form::~Form() {}
 
 const std::string Form::getName() const {return this->name;}
-const int Form::getGradeExecute() const {return this->grade_to_execute;}
-const int Form::getGradetoSign() const {return this->grade_to_sign;}
+int Form::getGradeExecute() const {return this->grade_to_execute;}
+int Form::getGradetoSign() const {return this->grade_to_sign;}
 bool Form::isSigned() {return this->Signed;}
 
 const char *Form::GradeTooLowException::what() const throw() {

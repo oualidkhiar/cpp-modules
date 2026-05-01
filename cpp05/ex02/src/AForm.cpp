@@ -19,13 +19,11 @@ AForm& AForm::operator=(const AForm& other) {
     return *this;
 }
 
-AForm::~AForm() {
-    std::cout << "deconstrictor called for name: " << this->name << " class AForm" << std::endl;
-}
+AForm::~AForm() {}
 
 const std::string AForm::getName() const {return this->name;}
-const int AForm::getGradeExecute() const {return this->grade_to_execute;}
-const int AForm::getGradetoSign() const {return this->grade_to_sign;}
+int AForm::getGradeExecute() const {return this->grade_to_execute;}
+int AForm::getGradetoSign() const {return this->grade_to_sign;}
 bool AForm::isSigned() {return this->Signed;}
 
 const char *AForm::GradeTooLowException::what() const throw() {
