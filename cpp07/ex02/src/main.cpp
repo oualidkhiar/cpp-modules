@@ -1,6 +1,5 @@
 
 #include "../includes/Array.hpp"
-#include <iostream>
 
 #define MAX_VAL 750
 
@@ -19,6 +18,16 @@ int main(int, char**)
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
+
+        for (int i = 0; i < MAX_VAL; i++) {
+            tmp[i] = i+1;
+            test[i] = i - MAX_VAL;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            std::cout << "origin = " << numbers[i] << " copy  = " << test[i] << std::endl;
+        }
+
     }
 
     for (int i = 0; i < MAX_VAL; i++)
