@@ -13,6 +13,12 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
+void BitcoinExchange::print_data_base() {
+    for (std::map<Date, double>::iterator it = _dataBase.begin(); it != _dataBase.end(); it++) {
+        std::cout << "date " << it->first << " value: " << it->second << std::endl;
+    }
+}
+
 void BitcoinExchange::load_data_base() 
 {
 
@@ -42,12 +48,6 @@ void BitcoinExchange::load_data_base()
     std::cout << "data base loaded seccusfully" << std::endl;
     std::cout << std::endl;
     std::cout << "---------------------------------- the result of appling rate is -------------------------------" << std::endl << std::endl;
-}
-
-void BitcoinExchange::print_data_base() {
-    for (std::map<Date, double>::iterator it = _dataBase.begin(); it != _dataBase.end(); it++) {
-        std::cout << "date " << it->first << " value: " << it->second << std::endl;
-    }
 }
 
 void BitcoinExchange::parse_header(std::ifstream& file, std::string& line) {
@@ -170,14 +170,14 @@ void BitcoinExchange::parse_data_and_display(const std::string& line) {
     }
 
     if (is_valid) {
-        double result = get_exchange_rate_for_that_year(p_date.second, p_val.second);
+        double result = get_exchange_rate_for_that_date(p_date.second, p_val.second);
         std::cout << *(reinterpret_cast<std::string *>(splited_items[0])) << " => " << p_val.second << " = " << result << std::endl;
     }
 
     delete_items(splited_items, 3);
 }
 
-double BitcoinExchange::get_exchange_rate_for_that_year(Date dt, const double& val)
+double BitcoinExchange::get_exchange_rate_for_that_date(Date dt, const double& val)
 {
     Date currentDate = dt;
 

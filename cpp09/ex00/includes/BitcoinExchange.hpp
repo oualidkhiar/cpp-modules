@@ -52,7 +52,7 @@ class BitcoinExchange {
         std::pair<bool, Date> parse_date(const std::string& date);
         std::pair<bool, double> parse_value(const std::string& val);
         void parse_data_and_display(const std::string& line) ;
-        double get_exchange_rate_for_that_year(Date dt, const double& val);
+        double get_exchange_rate_for_that_date(Date dt, const double& val);
 
     public:
 
