@@ -11,4 +11,5 @@ int main(int ac, char **av)
     } else {
         std::cerr << "Error: could not open file." << std::endl;
     }
+
 }
