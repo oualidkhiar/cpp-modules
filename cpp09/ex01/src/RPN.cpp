@@ -28,6 +28,9 @@ int Rpn::execute(const std::string& s)
             else {
                 throw std::runtime_error(std::string("unknown char ") + s[i]);
             }
+            if (s[i + 1] != '\0' and !is_whitespace(s[+ 1 ])) {
+                throw std::runtime_error("Syntax of Polish notation expression is incorrect");
+            }
         }
     }
     return st.size() == 1 ? st.top() : throw std::runtime_error("Syntax of Polish notation expression is incorrect");
