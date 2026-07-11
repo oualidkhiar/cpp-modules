@@ -2,6 +2,9 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 #include <exception>
 #include <stdexcept>
 #include <string>
@@ -13,7 +16,7 @@
 class ParsedArgs {
     private:
 
-        std::vector<unsigned int> _elements;
+        std::vector<size_t> _elements;
 
     public:
 
@@ -72,6 +75,10 @@ class ParsedArgs {
             }
             std::cout << std::endl;
         }
+
+        std::vector<int> get_elements() {
+            return _elements;
+        }
 };
 
 
@@ -103,41 +110,71 @@ class PmergeMe {
     private:
 
         ParsedArgs& _parsed_elements;
-        std::vector<int> _sorted_vector;
-        std::deque<int> _sorted_deque;
+        std::vector<size_t> _sorted_vector;
+        std::deque<size_t> _sorted_deque;
         double         _vector_time_to_sort;
         double         _deque_time_to_sort;
 
-        size_t straggler;
-        bool has_straggler;
-
 
         template <typename T>
-        void create_pairs(T& used_container)
+        std::vector<Pair> create_pairs(T& used_container)
         {
+            std::vector<Pair> pairs;
             size_t i = 0;
 
-            while (i < _parsed_elements.get_size())
+            while (i + 1 < used_container.size())
             {
-                if (i + 1 < _parsed_elements.get_size())
-                {
-
-                    Pair p(used_container[i], used_container[i + 1]);
-
-                    used_container.push_back(p);
-                }            
+                Pair p(used_container[i], used_container[i + 1]);
+                pairs.push_back(p);
                 i += 2;
             }
-
-            if (_parsed_elements.get_size() % 2 == 0) {
-                has_straggler = true;
-                straggler = _parsed_elements[_parsed_elements.get_size() - 1];
-            }
+            return pairs;
         }
-
         
-        void fordJohnsonVector(std::vector<Pair>& pairs) {
+        std::vector<size_t> fordJohnsonVector(std::vector<Pair> pairs, std::vector<size_t>& input, bool is_firstCall)
+        {
+            if (pairs.size() <= 1 and !is_firstCall) {
+                return pairs;
+            }
+            
+            std::vector<Pair> pairs = create_pairs(input);
 
+            // size_t straggler;
+            // bool has_straggler = false;
+
+            // if (input.size() % 2 != 0) {
+            //     has_straggler = true;
+            //     straggler = input[input.size() - 1];
+            // }
+
+            // std::vector<size_t> larges;
+            // std::vector<size_t> smalles;
+            // std::vector<size_t> small_index_per_large;
+
+            larges.reserve(input.size() / 2);
+
+            for (size_t i = 0; i < (input.size() / 2); i++) {
+                input.push_back(pairs[i].large);
+                // smalles.push_back(pairs[i].small);
+                // small_index_per_large.push_back(i);
+            }
+
+            std::vector<Pair> sortedLarges_with_thier_small_pairs = fordJohnsonVector(pairs, input, false);
+
+            std::vector<size_t> mainShain;
+
+            // insert large numbers into mainShain
+            for (size_t i = 0; i < sortedLarges_with_thier_small_pairs.size(); i++) {
+                mainShain.push_back(sortedLarges_with_thier_small_pairs[i].large);
+            }
+
+            // insert small numbers into mainShain
+            for (size_t i = 0; i < sortedLarges_with_thier_small_pairs.size(); i++) {
+                auto pos = std::lower_bound(mainShain.begin(); mainShain.end(), sortedLarges_with_thier_small_pairs[i].small);
+
+                mainShain.insert(pos, sortedLarges_with_thier_small_pairs[i].small);
+            }
+            return create_pairs(mainShain);
         }
 
 
@@ -158,24 +195,29 @@ class PmergeMe {
         ~PmergeMe() {}
 
         void sort_using_vector() {
-            clock_t start = clock();
+            // clock_t start = clock();
 
-            std::vector<Pair> vecPairs;
-            vecPairs.reserve((_parsed_elements.get_size() / 2));
-            create_pairs(vecPairs);
+            std::vector<size_t> input = _parsed_elements.get_elements();
+            // std::vector<Pair> pairs = create_pairs(input);
 
-            void fordJohnsonVector(vecPairs);
-
-
-            clock_t end = clock();
-            this->_vector_time_to_sort = static_cast<double>(end - start);
+            std::vector<Pair> Sortedpairs = fordJohnsonVector({}, input, true);
+            int i = 0;
+            while (i < Sortedpairs.size())
+            {
+                if (i > 0)
+                    std::cout << " ";
+                std::cout << Sortedpairs[i];
+            }
+            std::cout << std::endl;
+            // clock_t end = clock();
+            // this->_vector_time_to_sort = static_cast<double>(end - start);
 
         }
 
 
         // ----------------getters and printers----------------
-        std::vector<int>& get_sorted_vector() {return _sorted_vector;}
-        std::deque<int>& get_sorted_deque() {return _sorted_deque;}
+        std::vector<size_t>& get_sorted_vector() {return _sorted_vector;}
+        std::deque<size_t>& get_sorted_deque() {return _sorted_deque;}
         double get_vector_time() const {return _vector_time_to_sort;}
         double get_deque_time() const {return _deque_time_to_sort;}
 
