@@ -67,4 +67,4 @@ class BitcoinExchange {
         void applyRate(std::string file_name);
 };
 
-#endif 
+#endif

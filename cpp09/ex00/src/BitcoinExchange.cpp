@@ -219,8 +219,6 @@ void BitcoinExchange::applyRate(std::string file_name)
     std::cout << "-------------------------------------------- Done. ----------------------------------------------" << std::endl;
 }
 
-
-
 // --------------------------------------------helpers---------------------------------------------------------------------
 
 void BitcoinExchange::delete_items(void **addresses, const size_t& size) {
